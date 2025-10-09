@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FunQuiz</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #E0F7FA;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #0D47A1;
+    color: #FFFFFF;
+    padding: 1rem;
+}
+
+nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+.quiz-container {
+    padding: 2rem;
+    background: #FFFFFF;
+    margin: 2rem auto;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+button.option-btn {
+    display: block;
+    width: 200px;
+    margin: 0.5rem auto;
+    padding: 0.5rem;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background: #4CAF50;
+    color: #FFFFFF;
+    transition: background 0.3s;
+}
+
+button.option-btn:hover {
+    background: #388E3C;
+}
+
+#next-btn {
+    background: #FF9800;
+    color: #FFFFFF;
+    margin-top: 1rem;
+    cursor: pointer;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+#next-btn:hover {
+    background: #F57C00;
+}
+
+h2, p {
+    color: #212121;
+}
+
+#message {
+    font-weight: bold;
+    margin-top: 1rem;
+    height: 1.5rem;
+    color: #d32f2f; 
+}
+#message.correct {
+    color: #388E3C; 
+}
+</style>
+</head>
+<body>
+<header>
+<h1>FunQuiz</h1>
+<nav>
+    <a href="#">Home</a> |
+    <a href="#">Play Quiz</a>
+</nav>
+</header>
+
+<section class="quiz-container">
+    <h2 id="question">Question will appear here</h2>
+    <div class="options">
+        <button class="option-btn" id="option1"></button>
+        <button class="option-btn" id="option2"></button>
+        <button class="option-btn" id="option3"></button>
+        <button class="option-btn" id="option4"></button>
+    </div>
+    <p id="message"></p>
+    <p>Score: <span id="score">0</span></p>
+    <button id="next-btn">Next Question</button>
+</section>
+
+<script>
+const questions = [
+    { question: "What is the capital of France?", options: ["Paris", "Rome", "Berlin", "Madrid"], answer: "Paris" },
+    { question: "Which planet is known as the Red Planet?", options: ["Earth", "Mars", "Jupiter", "Venus"], answer: "Mars" },
+    { question: "Who wrote 'Romeo and Juliet'?", options: ["Shakespeare", "Hemingway", "Tolstoy", "Dickens"], answer: "Shakespeare" }
+];
+
+let current = 0;
+let score = 0;
+
+const questionEl = document.getElementById("question");
+const options = [
+    document.getElementById("option1"),
+    document.getElementById("option2"),
+    document.getElementById("option3"),
+    document.getElementById("option4")
+];
+const scoreEl = document.getElementById("score");
+const nextBtn = document.getElementById("next-btn");
+const messageEl = document.getElementById("message");
+
+function loadQuestion() {
+    messageEl.textContent = ""; 
+    messageEl.className = ""; 
+    let q = questions[current];
+    questionEl.textContent = q.question;
+    q.options.forEach((opt, i) => {
+        options[i].textContent = opt;
+        options[i].disabled = false; 
+        options[i].onclick = () => checkAnswer(opt);
+    });
+}
+
+function checkAnswer(selected) {
+    let correctAnswer = questions[current].answer;
+    if (selected === correctAnswer) {
+        score++;
+        scoreEl.textContent = score;
+        messageEl.textContent = "Correct!";
+        messageEl.className = "correct";
+    } else {
+        messageEl.textContent = "Oops! That’s wrong.";
+        messageEl.className = "wrong";
+    }
+
+    options.forEach(btn => btn.disabled = true);
+}
+
+nextBtn.onclick = () => {
+    current++;
+    if (current < questions.length) {
+        loadQuestion();
+    } else {
+        if (score === questions.length) {
+            alert("Congratulations! You aced the quiz! Score: " + score);
+        } else if (score === 0) {
+            alert("Better luck next time! Score: " + score);
+        } else {
+            alert("Quiz finished! You scored " + score + " out of " + questions.length);
+        }
+        current = 0;
+        score = 0;
+        scoreEl.textContent = score;
+        loadQuestion();
+    }
+}
+loadQuestion();
+</script>
+</body>
+</html>

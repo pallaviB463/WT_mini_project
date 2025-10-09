@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IdeaBoard | Submit Idea</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>💡 IdeaBoard</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="ideas.html">Ideas</a>
+      <a href="submit.html">Submit Idea</a>
+      <a href="top.html">Top Ideas</a>
+      <a href="team.html">Team</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2>Submit Your Idea</h2>
+    <form id="ideaForm">
+      <label>Title:</label>
+      <input type="text" id="title" required>
+
+      <label>Author:</label>
+      <input type="text" id="author" required>
+
+      <label>Description:</label>
+      <textarea id="description" required></textarea>
+
+      <label>Category:</label>
+      <input type="text" id="category">
+
+      <button type="submit">Submit Idea</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 IdeaBoard</p>
+  </footer>
+
+  <script src="js/submit.js"></script>
+</body>
+</html>
