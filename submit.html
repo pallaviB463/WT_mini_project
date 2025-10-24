@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>IdeaBoard | Submit Idea</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Idea - IdeaBoard</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/submit.js" defer></script>
 </head>
 <body>
   <header>
@@ -11,36 +13,26 @@
     <nav>
       <a href="index.html">Home</a>
       <a href="ideas.html">Ideas</a>
-      <a href="submit.html">Submit Idea</a>
+      <a href="submit.html" class="active">Submit</a>
       <a href="top.html">Top Ideas</a>
       <a href="team.html">Team</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
 
-  <section>
+  <section class="form-section">
     <h2>Submit Your Idea</h2>
     <form id="ideaForm">
-      <label>Title:</label>
-      <input type="text" id="title" required>
+      <label>Title</label>
+      <input type="text" id="ideaTitle" placeholder="Enter idea title" required>
 
-      <label>Author:</label>
-      <input type="text" id="author" required>
-
-      <label>Description:</label>
-      <textarea id="description" required></textarea>
-
-      <label>Category:</label>
-      <input type="text" id="category">
+      <label>Description</label>
+      <textarea id="ideaDescription" rows="4" placeholder="Describe your idea..." required></textarea>
 
       <button type="submit">Submit Idea</button>
     </form>
   </section>
 
-  <footer>
-    <p>© 2025 IdeaBoard</p>
-  </footer>
-
-  <script src="js/submit.js"></script>
+  <footer>© 2025 IdeaBoard</footer>
 </body>
 </html>

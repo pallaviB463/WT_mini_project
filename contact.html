@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>IdeaBoard | Contact</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - IdeaBoard</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/contact.js" defer></script>
 </head>
 <body>
   <header>
@@ -11,28 +13,30 @@
     <nav>
       <a href="index.html">Home</a>
       <a href="ideas.html">Ideas</a>
-      <a href="submit.html">Submit Idea</a>
+      <a href="submit.html">Submit</a>
       <a href="top.html">Top Ideas</a>
       <a href="team.html">Team</a>
-      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="active">Contact</a>
     </nav>
   </header>
 
-  <section>
+  <section class="form-section">
     <h2>Contact Us</h2>
-    <form onsubmit="alert('Thanks for your feedback!'); return false;">
-      <label>Name:</label>
-      <input type="text" required>
-      <label>Email:</label>
-      <input type="email" required>
-      <label>Message:</label>
-      <textarea required></textarea>
-      <button type="submit">Send</button>
+    <p>Have suggestions or feedback? We’d love to hear from you!</p>
+    <form id="contactForm">
+      <label>Name</label>
+      <input type="text" id="name" required>
+
+      <label>Email</label>
+      <input type="email" id="email" required>
+
+      <label>Message</label>
+      <textarea id="message" rows="4" required></textarea>
+
+      <button type="submit">Send Message</button>
     </form>
   </section>
 
-  <footer>
-    <p>© 2025 IdeaBoard</p>
-  </footer>
+  <footer>© 2025 IdeaBoard</footer>
 </body>
 </html>

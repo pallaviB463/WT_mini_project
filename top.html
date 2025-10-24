@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>IdeaBoard | Top Ideas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top Ideas - IdeaBoard</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/top.js" defer></script>
 </head>
 <body>
   <header>
@@ -11,22 +13,18 @@
     <nav>
       <a href="index.html">Home</a>
       <a href="ideas.html">Ideas</a>
-      <a href="submit.html">Submit Idea</a>
-      <a href="top.html">Top Ideas</a>
+      <a href="submit.html">Submit</a>
+      <a href="top.html" class="active">Top Ideas</a>
       <a href="team.html">Team</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
 
-  <section>
-    <h2>Top Voted Ideas</h2>
-    <div id="top-ideas" class="card-container"></div>
-  </section>
+  <main>
+    <h2>🏆 Top Ranked Ideas</h2>
+    <div id="topIdeasContainer" class="grid"></div>
+  </main>
 
-  <footer>
-    <p>© 2025 IdeaBoard</p>
-  </footer>
-
-  <script src="js/top.js"></script>
+  <footer>© 2025 IdeaBoard</footer>
 </body>
 </html>

@@ -1,29 +1,25 @@
-document.getElementById("ideaForm").addEventListener("submit", function(e) {
+document.getElementById("ideaForm").addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const title = document.getElementById("title").value.trim();
-  const author = document.getElementById("author").value.trim();
-  const description = document.getElementById("description").value.trim();
-  const category = document.getElementById("category").value.trim();
+  const title = document.getElementById("ideaTitle").value.trim();
+  const desc = document.getElementById("ideaDescription").value.trim();
 
-  if (!title || !author || !description) {
-    alert("Please fill all required fields.");
-    return;
-  }
+  if (!title || !desc) return alert("Please fill out all fields.");
 
+  const ideas = JSON.parse(localStorage.getItem("ideas")) || [];
   const newIdea = {
-    id: Date.now(),
+    id: Date.now().toString(36),
     title,
-    author,
-    description,
-    category,
-    likes: 0
+    desc,
+    likes: 0,
+    createdAt: Date.now()
   };
-
-  let ideas = JSON.parse(localStorage.getItem("ideas")) || [];
   ideas.push(newIdea);
   localStorage.setItem("ideas", JSON.stringify(ideas));
 
-  alert("Idea submitted successfully!");
-  document.getElementById("ideaForm").reset();
+  // friendly confirmation then redirect to ideas page
+  alert("✅ Idea submitted successfully! Redirecting to Ideas...");
+  e.target.reset();
+  // go to ideas page so user can see and vote
+  window.location.href = 'ideas.html';
 });
